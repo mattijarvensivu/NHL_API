@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NHL_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Joukkue">
+    <Key>
+      <PropertyRef Name="idJoukkue" />
+    </Key>
+    <Property Name="idJoukkue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nimi" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Voitot" Type="Int32" />
+    <Property Name="Häviöt" Type="Int32" />
+    <Property Name="Jatkoaikahäviöt" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Pelaajas" Relationship="Self.FK_Pelaajajoukkue" FromRole="Joukkue" ToRole="Pelaaja" />
+  </EntityType>
+  <EntityType Name="Pelaaja">
+    <Key>
+      <PropertyRef Name="idPelaaja" />
+    </Key>
+    <Property Name="idPelaaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nimi" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pelinumero" Type="Int32" />
+    <Property Name="Maalit" Type="Int32" />
+    <Property Name="Syötöt" Type="Int32" />
+    <Property Name="Plusminus" Type="Int32" />
+    <Property Name="idJoukkue" Type="Int32" />
+    <NavigationProperty Name="Joukkue" Relationship="Self.FK_Pelaajajoukkue" FromRole="Pelaaja" ToRole="Joukkue" />
+  </EntityType>
+  <Association Name="FK_Pelaajajoukkue">
+    <End Role="Joukkue" Type="Self.Joukkue" Multiplicity="0..1" />
+    <End Role="Pelaaja" Type="Self.Pelaaja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Joukkue">
+        <PropertyRef Name="idJoukkue" />
+      </Principal>
+      <Dependent Role="Pelaaja">
+        <PropertyRef Name="idJoukkue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="H4102_3Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Joukkues" EntityType="Self.Joukkue" />
+    <EntitySet Name="Pelaajas" EntityType="Self.Pelaaja" />
+    <AssociationSet Name="FK_Pelaajajoukkue" Association="Self.FK_Pelaajajoukkue">
+      <End Role="Joukkue" EntitySet="Joukkues" />
+      <End Role="Pelaaja" EntitySet="Pelaajas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NHL_ModelStoreContainer" CdmEntityContainer="H4102_3Entities">
+    <EntitySetMapping Name="Joukkues">
+      <EntityTypeMapping TypeName="NHL_Model.Joukkue">
+        <MappingFragment StoreEntitySet="Joukkue">
+          <ScalarProperty Name="idJoukkue" ColumnName="idJoukkue" />
+          <ScalarProperty Name="Nimi" ColumnName="Nimi" />
+          <ScalarProperty Name="Voitot" ColumnName="Voitot" />
+          <ScalarProperty Name="Häviöt" ColumnName="Häviöt" />
+          <ScalarProperty Name="Jatkoaikahäviöt" ColumnName="Jatkoaikahäviöt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pelaajas">
+      <EntityTypeMapping TypeName="NHL_Model.Pelaaja">
+        <MappingFragment StoreEntitySet="Pelaaja">
+          <ScalarProperty Name="idPelaaja" ColumnName="idPelaaja" />
+          <ScalarProperty Name="Nimi" ColumnName="Nimi" />
+          <ScalarProperty Name="Pelinumero" ColumnName="Pelinumero" />
+          <ScalarProperty Name="Maalit" ColumnName="Maalit" />
+          <ScalarProperty Name="Syötöt" ColumnName="Syötöt" />
+          <ScalarProperty Name="Plusminus" ColumnName="Plusminus" />
+          <ScalarProperty Name="idJoukkue" ColumnName="idJoukkue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

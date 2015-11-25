@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NHL_Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Joukkue">
+          <Key>
+            <PropertyRef Name="idJoukkue" />
+          </Key>
+          <Property Name="idJoukkue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Voitot" Type="int" />
+          <Property Name="Häviöt" Type="int" />
+          <Property Name="Jatkoaikahäviöt" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Pelaaja">
+          <Key>
+            <PropertyRef Name="idPelaaja" />
+          </Key>
+          <Property Name="idPelaaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Pelinumero" Type="int" />
+          <Property Name="Maalit" Type="int" />
+          <Property Name="Syötöt" Type="int" />
+          <Property Name="Plusminus" Type="int" />
+          <Property Name="idJoukkue" Type="int" />
+        </EntityType>
+        <Association Name="FK_Pelaajajoukkue">
+          <End Role="Joukkue" Type="Self.Joukkue" Multiplicity="0..1" />
+          <End Role="Pelaaja" Type="Self.Pelaaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Joukkue">
+              <PropertyRef Name="idJoukkue" />
+            </Principal>
+            <Dependent Role="Pelaaja">
+              <PropertyRef Name="idJoukkue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NHL_ModelStoreContainer">
+          <EntitySet Name="Joukkue" EntityType="Self.Joukkue" Schema="H4102_3" store:Type="Tables" />
+          <EntitySet Name="Pelaaja" EntityType="Self.Pelaaja" Schema="H4102_3" store:Type="Tables" />
+          <AssociationSet Name="FK_Pelaajajoukkue" Association="Self.FK_Pelaajajoukkue">
+            <End Role="Joukkue" EntitySet="Joukkue" />
+            <End Role="Pelaaja" EntitySet="Pelaaja" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NHL_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Joukkue">
+          <Key>
+            <PropertyRef Name="idJoukkue" />
+          </Key>
+          <Property Name="idJoukkue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nimi" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Voitot" Type="Int32" />
+          <Property Name="Häviöt" Type="Int32" />
+          <Property Name="Jatkoaikahäviöt" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pelaajas" Relationship="Self.FK_Pelaajajoukkue" FromRole="Joukkue" ToRole="Pelaaja" />
+        </EntityType>
+        <EntityType Name="Pelaaja">
+          <Key>
+            <PropertyRef Name="idPelaaja" />
+          </Key>
+          <Property Name="idPelaaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nimi" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pelinumero" Type="Int32" />
+          <Property Name="Maalit" Type="Int32" />
+          <Property Name="Syötöt" Type="Int32" />
+          <Property Name="Plusminus" Type="Int32" />
+          <Property Name="idJoukkue" Type="Int32" />
+          <NavigationProperty Name="Joukkue" Relationship="Self.FK_Pelaajajoukkue" FromRole="Pelaaja" ToRole="Joukkue" />
+        </EntityType>
+        <Association Name="FK_Pelaajajoukkue">
+          <End Role="Joukkue" Type="Self.Joukkue" Multiplicity="0..1" />
+          <End Role="Pelaaja" Type="Self.Pelaaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Joukkue">
+              <PropertyRef Name="idJoukkue" />
+            </Principal>
+            <Dependent Role="Pelaaja">
+              <PropertyRef Name="idJoukkue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="H4102_3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Joukkues" EntityType="Self.Joukkue" />
+          <EntitySet Name="Pelaajas" EntityType="Self.Pelaaja" />
+          <AssociationSet Name="FK_Pelaajajoukkue" Association="Self.FK_Pelaajajoukkue">
+            <End Role="Joukkue" EntitySet="Joukkues" />
+            <End Role="Pelaaja" EntitySet="Pelaajas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NHL_ModelStoreContainer" CdmEntityContainer="H4102_3Entities">
+          <EntitySetMapping Name="Joukkues">
+            <EntityTypeMapping TypeName="NHL_Model.Joukkue">
+              <MappingFragment StoreEntitySet="Joukkue">
+                <ScalarProperty Name="idJoukkue" ColumnName="idJoukkue" />
+                <ScalarProperty Name="Nimi" ColumnName="Nimi" />
+                <ScalarProperty Name="Voitot" ColumnName="Voitot" />
+                <ScalarProperty Name="Häviöt" ColumnName="Häviöt" />
+                <ScalarProperty Name="Jatkoaikahäviöt" ColumnName="Jatkoaikahäviöt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pelaajas">
+            <EntityTypeMapping TypeName="NHL_Model.Pelaaja">
+              <MappingFragment StoreEntitySet="Pelaaja">
+                <ScalarProperty Name="idPelaaja" ColumnName="idPelaaja" />
+                <ScalarProperty Name="Nimi" ColumnName="Nimi" />
+                <ScalarProperty Name="Pelinumero" ColumnName="Pelinumero" />
+                <ScalarProperty Name="Maalit" ColumnName="Maalit" />
+                <ScalarProperty Name="Syötöt" ColumnName="Syötöt" />
+                <ScalarProperty Name="Plusminus" ColumnName="Plusminus" />
+                <ScalarProperty Name="idJoukkue" ColumnName="idJoukkue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
