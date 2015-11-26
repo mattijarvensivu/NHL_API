@@ -24,7 +24,7 @@ namespace NHL_Api.Models
         public string Nimi { get; set; }
         public int Voitot { get; set; }
         public int Häviöt { get; set; }
-        public string Jatkoaikahäviöt { get; set; }
+        public int Jatkoaikahäviöt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pelaaja> Pelaajas { get; set; }
