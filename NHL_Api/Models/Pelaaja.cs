@@ -16,11 +16,11 @@ namespace NHL_Api.Models
     {
         public int idPelaaja { get; set; }
         public string Nimi { get; set; }
-        public Nullable<int> Pelinumero { get; set; }
-        public Nullable<int> Maalit { get; set; }
-        public Nullable<int> Syötöt { get; set; }
-        public Nullable<int> Plusminus { get; set; }
-        public Nullable<int> idJoukkue { get; set; }
+        public int Pelinumero { get; set; }
+        public int Maalit { get; set; }
+        public int Syötöt { get; set; }
+        public int Plusminus { get; set; }
+        public int idJoukkue { get; set; }
     
         public virtual Joukkue Joukkue { get; set; }
     }

@@ -20,7 +20,9 @@ namespace NHL_Api.Controllers
         // GET: api/Pelaaja
         public IQueryable<Pelaaja> GetPelaajas()
         {
+           
             return db.Pelaaja;
+            
         }
 
         // GET: api/Pelaaja/5
@@ -28,6 +30,7 @@ namespace NHL_Api.Controllers
         public async Task<IHttpActionResult> GetPelaaja(int id)
         {
             Pelaaja pelaaja = await db.Pelaaja.FindAsync(id);
+
             if (pelaaja == null)
             {
                 return NotFound();
