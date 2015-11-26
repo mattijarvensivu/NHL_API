@@ -12,7 +12,6 @@ namespace NHL_Api.Models
         public int voitot { get; set; }
         public int häviöt { get; set; }
         public int jatkoaikahäviöt { get; set; }
-
         public int pisteet { get; set; }
         public int JoukkueId { get; set; }
 

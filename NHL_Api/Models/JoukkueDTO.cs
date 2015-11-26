@@ -15,6 +15,5 @@ namespace NHL_Api.Models
         public int pisteet { get; set; }
 
 
-
     }
 }

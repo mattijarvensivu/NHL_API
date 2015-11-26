@@ -20,6 +20,8 @@ namespace NHL_Api.Controllers
         // GET: api/Joukkue
         public IQueryable<Joukkue> GetJoukkues()
         {
+            //JoukkueDTO joukko = new JoukkueDTO();
+           
             return db.Joukkue;
         }
 
@@ -35,6 +37,25 @@ namespace NHL_Api.Controllers
 
             return Ok(joukkue);
         }
+
+      /*  [ResponseType(typeof(Joukkue))]
+        [Route("api/kakkaa")]
+        [HttpGet]
+        public async Task<IHttpActionResult> Getyksijoukkuenimi(int id)
+        {
+            //User user = await db.Users.FindAsync(id);            
+            var Nimi = from c in db.Joukkue where (c.idJoukkue == id) select c.Nimi;
+            
+
+            if (Nimi == null)
+            {
+                return NotFound();
+            } 
+            return Ok(Nimi);
+        }
+
+    */
+
 
         // PUT: api/Joukkue/5
         [ResponseType(typeof(void))]
