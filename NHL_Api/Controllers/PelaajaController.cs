@@ -17,26 +17,53 @@ namespace NHL_Api.Controllers
     {
         private H4102_3Entities db = new H4102_3Entities();
 
+        
+
+
         // GET: api/Pelaaja
-        public IQueryable<Pelaaja> GetPelaajas()
+        public IQueryable<PelaajaDto> GetPelaajat()
         {
-           
-            return db.Pelaaja;
-            
+            var pelaajat = from b in db.Pelaajas
+                          select new PelaajaDto
+                          {
+                              Id = b.idPelaaja,
+                              Nimi = b.Nimi,
+                              Pelinumero = b.Pelinumero,
+                              Maalit = b.Maalit,
+                              Syötöt = b.Syötöt,
+                              Plusmiinus = b.Plusminus,
+                              Pisteet = b.Maalit + b.Syötöt
+                          };
+            return pelaajat;
         }
 
+
+
         // GET: api/Pelaaja/5
-        [ResponseType(typeof(Pelaaja))]
+        [ResponseType(typeof(PelaajaDto))]
         public async Task<IHttpActionResult> GetPelaaja(int id)
         {
-            Pelaaja pelaaja = await db.Pelaaja.FindAsync(id);
+           
+            var pelaajat = await db.Pelaajas.Select(b =>
 
-            if (pelaaja == null)
+           new PelaajaDto
+           {
+               Id = b.idPelaaja,
+               Nimi = b.Nimi,
+               Pelinumero = b.Pelinumero,
+               Maalit = b.Maalit,
+               Syötöt = b.Syötöt,
+               Plusmiinus = b.Plusminus,
+               Pisteet = b.Maalit + b.Syötöt
+           }
+           ).SingleOrDefaultAsync(b => b.Id == id);
+
+            if (pelaajat == null)
             {
                 return NotFound();
             }
 
-            return Ok(pelaaja);
+            return Ok(pelaajat);
         }
 
         // PUT: api/Pelaaja/5
@@ -83,7 +110,7 @@ namespace NHL_Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Pelaaja.Add(pelaaja);
+            db.Pelaajas.Add(pelaaja);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = pelaaja.idPelaaja }, pelaaja);
@@ -93,13 +120,13 @@ namespace NHL_Api.Controllers
         [ResponseType(typeof(Pelaaja))]
         public async Task<IHttpActionResult> DeletePelaaja(int id)
         {
-            Pelaaja pelaaja = await db.Pelaaja.FindAsync(id);
+            Pelaaja pelaaja = await db.Pelaajas.FindAsync(id);
             if (pelaaja == null)
             {
                 return NotFound();
             }
 
-            db.Pelaaja.Remove(pelaaja);
+            db.Pelaajas.Remove(pelaaja);
             await db.SaveChangesAsync();
 
             return Ok(pelaaja);
@@ -116,7 +143,7 @@ namespace NHL_Api.Controllers
 
         private bool PelaajaExists(int id)
         {
-            return db.Pelaaja.Count(e => e.idPelaaja == id) > 0;
+            return db.Pelaajas.Count(e => e.idPelaaja == id) > 0;
         }
     }
 }

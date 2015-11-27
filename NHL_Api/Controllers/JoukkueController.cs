@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.WebPages;
 using NHL_Api.Models;
 
 namespace NHL_Api.Controllers
@@ -18,38 +19,38 @@ namespace NHL_Api.Controllers
         private H4102_3Entities db = new H4102_3Entities();
 
         // GET: api/Joukkue
-        public IQueryable<JoukkueDTO> GetJoukkues()
+        public IQueryable<JoukkueDto> GetJoukkues()
         {
-            var joukkue = from b in db.Joukkue
-                          select new JoukkueDTO()
+            var joukkue = from b in db.Joukkues
+                          select new JoukkueDto
                           {
-                              JoukkueID = b.idJoukkue,
-                              nimi = b.Nimi,
-                              voitot = b.Voitot,
-                              häviöt = b.Häviöt,
-                              jatkoaikahaviot = b.Jatkoaikahäviöt
-
+                              Joukkueid = b.idJoukkue,
+                              Nimi = b.Nimi,
+                              Voitot = b.Voitot,
+                              Häviöt = b.Häviöt,
+                              Jatkoaikahaviot = b.Jatkoaikahäviöt,
+                              Pisteet = b.Voitot * 2 + b.Jatkoaikahäviöt
                           };
             return joukkue;
         }
 
         // GET: api/Joukkue/5
-        [ResponseType(typeof(JoukkueDTO))]
+        [ResponseType(typeof(JoukkueDto))]
         public async Task<IHttpActionResult> GetJoukkue(int id)
         {
-            //Joukkue joukkue = await db.Joukkue.FindAsync(id);
-            var joukkue = await db.Joukkue.Select(b =>
-
-           new JoukkueDTO()
+            //Joukkue joukkue = await _db.Joukkue.FindAsync(id);
+            var joukkue = await db.Joukkues.Select(b =>
+            
+           new JoukkueDto
            {
-               JoukkueID = b.idJoukkue,
-               nimi = b.Nimi,
-               voitot =b.Voitot,
-               häviöt = b.Häviöt,
-               jatkoaikahaviot = b.Jatkoaikahäviöt,
-               pisteet = b.Voitot * 2 + b.Jatkoaikahäviöt
+               Joukkueid = b.idJoukkue,
+               Nimi = b.Nimi,
+               Voitot = b.Voitot,
+               Häviöt = b.Häviöt,
+               Jatkoaikahaviot = b.Jatkoaikahäviöt,
+             Pisteet = b.Voitot * 2 + b.Jatkoaikahäviöt
            }
-           ).SingleOrDefaultAsync(b => b.JoukkueID == id);
+           ).SingleOrDefaultAsync(b => b.Joukkueid == id);
 
             if (joukkue == null)
             {
@@ -58,14 +59,15 @@ namespace NHL_Api.Controllers
 
             return Ok(joukkue);
         }
+
         //hio vielä. en varma toimiiko
         [ResponseType(typeof(Joukkue))]
         [Route("api/Joukkue/{id}/Pelaajat")]
         [HttpGet]
         public async Task<IHttpActionResult> GetJoukkuePelaajat(int id)
         {
-            var joukkue = from b in db.Joukkue where (b.idJoukkue == id) select b.Pelaajas;
-                          
+            Joukkue joukkue = await db.Joukkues.FindAsync(id);
+            
 
             if (joukkue == null)
             {
@@ -120,7 +122,7 @@ namespace NHL_Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Joukkue.Add(joukkue);
+            db.Joukkues.Add(joukkue);
             await db.SaveChangesAsync();
 
 
@@ -133,13 +135,13 @@ namespace NHL_Api.Controllers
         [ResponseType(typeof(Joukkue))]
         public async Task<IHttpActionResult> DeleteJoukkue(int id)
         {
-            Joukkue joukkue = await db.Joukkue.FindAsync(id);
+            Joukkue joukkue = await db.Joukkues.FindAsync(id);
             if (joukkue == null)
             {
                 return NotFound();
             }
 
-            db.Joukkue.Remove(joukkue);
+            db.Joukkues.Remove(joukkue);
             await db.SaveChangesAsync();
 
             return Ok(joukkue);
@@ -156,7 +158,7 @@ namespace NHL_Api.Controllers
 
         private bool JoukkueExists(int id)
         {
-            return db.Joukkue.Count(e => e.idJoukkue == id) > 0;
+            return db.Joukkues.Count(e => e.idJoukkue == id) > 0;
         }
     }
 }

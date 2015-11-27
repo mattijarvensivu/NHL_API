@@ -6,9 +6,9 @@
     </Key>
     <Property Name="idJoukkue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nimi" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Voitot" Type="Int32" />
-    <Property Name="Häviöt" Type="Int32" />
-    <Property Name="Jatkoaikahäviöt" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Voitot" Type="Int32" Nullable="false" />
+    <Property Name="Häviöt" Type="Int32" Nullable="false" />
+    <Property Name="Jatkoaikahäviöt" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Pelaajas" Relationship="Self.FK_Pelaajajoukkue" FromRole="Joukkue" ToRole="Pelaaja" />
   </EntityType>
   <EntityType Name="Pelaaja">
@@ -17,10 +17,10 @@
     </Key>
     <Property Name="idPelaaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nimi" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pelinumero" Type="Int32" />
-    <Property Name="Maalit" Type="Int32" />
-    <Property Name="Syötöt" Type="Int32" />
-    <Property Name="Plusminus" Type="Int32" />
+    <Property Name="Pelinumero" Type="Int32" Nullable="false" />
+    <Property Name="Maalit" Type="Int32" Nullable="false" />
+    <Property Name="Syötöt" Type="Int32" Nullable="false" />
+    <Property Name="Plusminus" Type="Int32" Nullable="false" />
     <Property Name="idJoukkue" Type="Int32" />
     <NavigationProperty Name="Joukkue" Relationship="Self.FK_Pelaajajoukkue" FromRole="Pelaaja" ToRole="Joukkue" />
   </EntityType>

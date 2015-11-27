@@ -25,7 +25,7 @@ namespace NHL_Api.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Joukkue> Joukkue { get; set; }
-        public virtual DbSet<Pelaaja> Pelaaja { get; set; }
+        public virtual DbSet<Joukkue> Joukkues { get; set; }
+        public virtual DbSet<Pelaaja> Pelaajas { get; set; }
     }
 }
