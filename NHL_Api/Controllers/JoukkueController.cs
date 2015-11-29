@@ -60,20 +60,32 @@ namespace NHL_Api.Controllers
             return Ok(joukkue);
         }
 
-        //hio vielä. en varma toimiiko
-        [ResponseType(typeof(Joukkue))]
+        
+        [ResponseType(typeof(Pelaaja))]
         [Route("api/Joukkue/{id}/Pelaajat")]
         [HttpGet]
         public async Task<IHttpActionResult> GetJoukkuePelaajat(int id)
         {
             Joukkue joukkue = await db.Joukkues.FindAsync(id);
-            
+           var pelaajat = from b in db.Pelaajas where (b.idJoukkue==joukkue.idJoukkue)
+                           select new PelaajaDto
+                           {
+                               Id = b.idPelaaja,
+                               Nimi = b.Nimi,
+                               Pelinumero = b.Pelinumero,
+                               Maalit = b.Maalit,
+                               Syötöt = b.Syötöt,
+                               Plusmiinus = b.Plusminus,
+                               Pisteet = b.Maalit + b.Syötöt
+                           };
 
-            if (joukkue == null)
+
+
+                if (joukkue.idJoukkue==0)
             {
                 return NotFound();
             }
-            return Ok(joukkue);
+            return Ok(pelaajat);
         }
 
     
@@ -163,20 +175,3 @@ namespace NHL_Api.Controllers
     }
 }
 
-/*  [ResponseType(typeof(Joukkue))]
-  [Route("api/kakkaa")]
-  [HttpGet]
-  public async Task<IHttpActionResult> Getyksijoukkuenimi(int id)
-  {
-      //User user = await db.Users.FindAsync(id);            
-      var Nimi = from c in db.Joukkue where (c.idJoukkue == id) select c.Nimi;
-
-
-      if (Nimi == null)
-      {
-          return NotFound();
-      } 
-      return Ok(Nimi);
-  }
-
-*/
