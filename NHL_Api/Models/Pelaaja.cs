@@ -8,7 +8,6 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 
 namespace NHL_Api.Models
 {
@@ -20,14 +19,11 @@ namespace NHL_Api.Models
         public int idPelaaja { get; set; }
         [Required]
         public string Nimi { get; set; }
-        [Required]
+        [Range(1,99)]
         public int Pelinumero { get; set; }
-        [Required]
         public int Maalit { get; set; }
-        [Required]
         public int Syötöt { get; set; }
-        [Required]
-        public int Plusminus { get; set; }
+        public int Plusmiinus { get; set; }
         public Nullable<int> idJoukkue { get; set; }
     
         public virtual Joukkue Joukkue { get; set; }

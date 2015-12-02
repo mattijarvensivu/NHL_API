@@ -73,7 +73,7 @@
           <Property Name="Pelinumero" Type="Int32" Nullable="false" />
           <Property Name="Maalit" Type="Int32" Nullable="false" />
           <Property Name="Syötöt" Type="Int32" Nullable="false" />
-          <Property Name="Plusminus" Type="Int32" Nullable="false" />
+          <Property Name="Plusmiinus" Type="Int32" Nullable="false" />
           <Property Name="idJoukkue" Type="Int32" />
           <NavigationProperty Name="Joukkue" Relationship="Self.FK_Pelaajajoukkue" FromRole="Pelaaja" ToRole="Joukkue" />
         </EntityType>
@@ -123,7 +123,7 @@
                 <ScalarProperty Name="Pelinumero" ColumnName="Pelinumero" />
                 <ScalarProperty Name="Maalit" ColumnName="Maalit" />
                 <ScalarProperty Name="Syötöt" ColumnName="Syötöt" />
-                <ScalarProperty Name="Plusminus" ColumnName="Plusminus" />
+                <ScalarProperty Name="Plusmiinus" ColumnName="Plusminus" />
                 <ScalarProperty Name="idJoukkue" ColumnName="idJoukkue" />
               </MappingFragment>
             </EntityTypeMapping>

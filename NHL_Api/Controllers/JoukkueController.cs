@@ -39,7 +39,6 @@ namespace NHL_Api.Controllers
         [ResponseType(typeof(JoukkueDto))]
         public async Task<IHttpActionResult> GetJoukkue(int id)
         {
-            //Joukkue joukkue = await _db.Joukkue.FindAsync(id);
             var joukkue = await db.Joukkues.Select(b =>
             
            new JoukkueDto
@@ -77,7 +76,7 @@ namespace NHL_Api.Controllers
                                Pelinumero = b.Pelinumero,
                                Maalit = b.Maalit,
                                Syötöt = b.Syötöt,
-                               Plusmiinus = b.Plusminus,
+                               Plusmiinus = b.Plusmiinus,
                                Pisteet = b.Maalit + b.Syötöt
                            };
 

@@ -25,11 +25,8 @@ namespace NHL_Api.Models
         public int idJoukkue { get; set; }
         [Required]
         public string Nimi { get; set; }
-        [Required]
         public int Voitot { get; set; }
-        [Required]
         public int Häviöt { get; set; }
-        [Required]
         public int Jatkoaikahäviöt { get; set; }
         [Required]
         public string Lyhenne { get; set; }

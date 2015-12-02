@@ -21,7 +21,7 @@
           <ScalarProperty Name="Pelinumero" ColumnName="Pelinumero" />
           <ScalarProperty Name="Maalit" ColumnName="Maalit" />
           <ScalarProperty Name="Syötöt" ColumnName="Syötöt" />
-          <ScalarProperty Name="Plusminus" ColumnName="Plusminus" />
+          <ScalarProperty Name="Plusmiinus" ColumnName="Plusminus" />
           <ScalarProperty Name="idJoukkue" ColumnName="idJoukkue" />
         </MappingFragment>
       </EntityTypeMapping>

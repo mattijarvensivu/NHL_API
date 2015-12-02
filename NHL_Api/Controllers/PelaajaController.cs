@@ -31,7 +31,7 @@ namespace NHL_Api.Controllers
                               Pelinumero = b.Pelinumero,
                               Maalit = b.Maalit,
                               Syötöt = b.Syötöt,
-                              Plusmiinus = b.Plusminus,
+                              Plusmiinus = b.Plusmiinus,
                               Pisteet = b.Maalit + b.Syötöt
                           };
             return pelaajat;
@@ -53,7 +53,7 @@ namespace NHL_Api.Controllers
                Pelinumero = b.Pelinumero,
                Maalit = b.Maalit,
                Syötöt = b.Syötöt,
-               Plusmiinus = b.Plusminus,
+               Plusmiinus = b.Plusmiinus,
                Pisteet = b.Maalit + b.Syötöt
            }
            ).SingleOrDefaultAsync(b => b.Id == id);
@@ -65,7 +65,33 @@ namespace NHL_Api.Controllers
 
             return Ok(pelaajat);
         }
+        [ResponseType(typeof(Joukkue))]
+        [Route("api/Pelaaja/{id}/Joukkue")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetPelaajanJoukkue(int id)
+        {
+            Pelaaja pelaaja = await db.Pelaajas.FindAsync(id);
+            var joukkue = from b in db.Joukkues
+                           where (b.idJoukkue == pelaaja.idJoukkue)
+                           select new JoukkueDto
+                           {
+                               Joukkueid = b.idJoukkue,
+                               Lyhenne = b.Lyhenne,
+                               Nimi = b.Nimi,
+                               Voitot = b.Voitot,
+                               Häviöt = b.Häviöt,
+                               Jatkoaikahaviot = b.Jatkoaikahäviöt,
+                               Pisteet = b.Voitot * 2 + b.Jatkoaikahäviöt
+                           };
 
+
+
+            if (pelaaja.idPelaaja == 0)
+            {
+                return NotFound();
+            }
+            return Ok(joukkue);
+        }
         // PUT: api/Pelaaja/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutPelaaja(int id, Pelaaja pelaaja)
