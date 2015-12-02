@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NHL_Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Joukkue">
+    <Key>
+      <PropertyRef Name="idJoukkue" />
+    </Key>
+    <Property Name="idJoukkue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Voitot" Type="int" Nullable="false" />
+    <Property Name="Häviöt" Type="int" Nullable="false" />
+    <Property Name="Jatkoaikahäviöt" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pelaaja">
+    <Key>
+      <PropertyRef Name="idPelaaja" />
+    </Key>
+    <Property Name="idPelaaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Pelinumero" Type="int" Nullable="false" />
+    <Property Name="Maalit" Type="int" Nullable="false" />
+    <Property Name="Syötöt" Type="int" Nullable="false" />
+    <Property Name="Plusminus" Type="int" Nullable="false" />
+    <Property Name="idJoukkue" Type="int" />
+  </EntityType>
+  <Association Name="FK_Pelaajajoukkue">
+    <End Role="Joukkue" Type="Self.Joukkue" Multiplicity="0..1" />
+    <End Role="Pelaaja" Type="Self.Pelaaja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Joukkue">
+        <PropertyRef Name="idJoukkue" />
+      </Principal>
+      <Dependent Role="Pelaaja">
+        <PropertyRef Name="idJoukkue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NHL_ModelStoreContainer">
+    <EntitySet Name="Joukkue" EntityType="Self.Joukkue" Schema="H4102_3" store:Type="Tables" />
+    <EntitySet Name="Pelaaja" EntityType="Self.Pelaaja" Schema="H4102_3" store:Type="Tables" />
+    <AssociationSet Name="FK_Pelaajajoukkue" Association="Self.FK_Pelaajajoukkue">
+      <End Role="Joukkue" EntitySet="Joukkue" />
+      <End Role="Pelaaja" EntitySet="Pelaaja" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -10,6 +10,7 @@
     <Property Name="Häviöt" Type="Int32" Nullable="false" />
     <Property Name="Jatkoaikahäviöt" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Pelaajas" Relationship="Self.FK_Pelaajajoukkue" FromRole="Joukkue" ToRole="Pelaaja" />
+    <Property Name="Lyhenne" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Pelaaja">
     <Key>

@@ -10,10 +10,11 @@
             <PropertyRef Name="idJoukkue" />
           </Key>
           <Property Name="idJoukkue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lyhenne" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="Voitot" Type="int" Nullable="false" />
-          <Property Name="Häviöt" Type="int" Nullable="false" />
-          <Property Name="Jatkoaikahäviöt" Type="int" Nullable="false" />
+          <Property Name="Voitot" Type="int" />
+          <Property Name="Häviöt" Type="int" />
+          <Property Name="Jatkoaikahäviöt" Type="int" />
         </EntityType>
         <EntityType Name="Pelaaja">
           <Key>
@@ -21,10 +22,10 @@
           </Key>
           <Property Name="idPelaaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="Pelinumero" Type="int" Nullable="false" />
-          <Property Name="Maalit" Type="int" Nullable="false" />
-          <Property Name="Syötöt" Type="int" Nullable="false" />
-          <Property Name="Plusminus" Type="int" Nullable="false" />
+          <Property Name="Pelinumero" Type="int" />
+          <Property Name="Maalit" Type="int" />
+          <Property Name="Syötöt" Type="int" />
+          <Property Name="Plusminus" Type="int" />
           <Property Name="idJoukkue" Type="int" />
         </EntityType>
         <Association Name="FK_Pelaajajoukkue">
@@ -61,6 +62,7 @@
           <Property Name="Häviöt" Type="Int32" Nullable="false" />
           <Property Name="Jatkoaikahäviöt" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Pelaajas" Relationship="Self.FK_Pelaajajoukkue" FromRole="Joukkue" ToRole="Pelaaja" />
+          <Property Name="Lyhenne" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Pelaaja">
           <Key>
@@ -104,6 +106,7 @@
           <EntitySetMapping Name="Joukkues">
             <EntityTypeMapping TypeName="NHL_Model.Joukkue">
               <MappingFragment StoreEntitySet="Joukkue">
+                <ScalarProperty Name="Lyhenne" ColumnName="Lyhenne" />
                 <ScalarProperty Name="Jatkoaikahäviöt" ColumnName="Jatkoaikahäviöt" />
                 <ScalarProperty Name="idJoukkue" ColumnName="idJoukkue" />
                 <ScalarProperty Name="Nimi" ColumnName="Nimi" />

@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace NHL_Api.Models
 {
     using System;
@@ -21,10 +23,16 @@ namespace NHL_Api.Models
         }
     
         public int idJoukkue { get; set; }
+        [Required]
         public string Nimi { get; set; }
+        [Required]
         public int Voitot { get; set; }
+        [Required]
         public int Häviöt { get; set; }
+        [Required]
         public int Jatkoaikahäviöt { get; set; }
+        [Required]
+        public string Lyhenne { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pelaaja> Pelaajas { get; set; }

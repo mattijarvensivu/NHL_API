@@ -5,10 +5,11 @@
       <PropertyRef Name="idJoukkue" />
     </Key>
     <Property Name="idJoukkue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lyhenne" Type="varchar" MaxLength="3" Nullable="false" />
     <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
-    <Property Name="Voitot" Type="int" Nullable="false" />
-    <Property Name="Häviöt" Type="int" Nullable="false" />
-    <Property Name="Jatkoaikahäviöt" Type="int" Nullable="false" />
+    <Property Name="Voitot" Type="int" />
+    <Property Name="Häviöt" Type="int" />
+    <Property Name="Jatkoaikahäviöt" Type="int" />
   </EntityType>
   <EntityType Name="Pelaaja">
     <Key>
@@ -16,10 +17,10 @@
     </Key>
     <Property Name="idPelaaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
-    <Property Name="Pelinumero" Type="int" Nullable="false" />
-    <Property Name="Maalit" Type="int" Nullable="false" />
-    <Property Name="Syötöt" Type="int" Nullable="false" />
-    <Property Name="Plusminus" Type="int" Nullable="false" />
+    <Property Name="Pelinumero" Type="int" />
+    <Property Name="Maalit" Type="int" />
+    <Property Name="Syötöt" Type="int" />
+    <Property Name="Plusminus" Type="int" />
     <Property Name="idJoukkue" Type="int" />
   </EntityType>
   <Association Name="FK_Pelaajajoukkue">

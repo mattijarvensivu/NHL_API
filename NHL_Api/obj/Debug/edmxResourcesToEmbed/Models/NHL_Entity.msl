@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Joukkues">
       <EntityTypeMapping TypeName="NHL_Model.Joukkue">
         <MappingFragment StoreEntitySet="Joukkue">
+          <ScalarProperty Name="Lyhenne" ColumnName="Lyhenne" />
           <ScalarProperty Name="Jatkoaikahäviöt" ColumnName="Jatkoaikahäviöt" />
           <ScalarProperty Name="idJoukkue" ColumnName="idJoukkue" />
           <ScalarProperty Name="Nimi" ColumnName="Nimi" />

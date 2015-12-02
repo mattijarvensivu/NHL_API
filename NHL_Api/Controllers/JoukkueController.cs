@@ -25,6 +25,7 @@ namespace NHL_Api.Controllers
                           select new JoukkueDto
                           {
                               Joukkueid = b.idJoukkue,
+                              Lyhenne = b.Lyhenne,
                               Nimi = b.Nimi,
                               Voitot = b.Voitot,
                               Häviöt = b.Häviöt,
@@ -44,6 +45,7 @@ namespace NHL_Api.Controllers
            new JoukkueDto
            {
                Joukkueid = b.idJoukkue,
+               Lyhenne = b.Lyhenne,
                Nimi = b.Nimi,
                Voitot = b.Voitot,
                Häviöt = b.Häviöt,
