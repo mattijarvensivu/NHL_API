@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-NHL_Api-20151125083742.mdf;Initial Catalog=aspnet-NHL_Api-20151125083742;Integrated Security=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="PelaajaDto2-Web.config Connection String" description="PelaajaDto2 Connection String used in web.config by the application to access the database." defaultValue="data source=(LocalDb)\MSSQLLocalDB;initial catalog=NHL_Api.Models.PelaajaDto2;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='PelaajaDto2']/@connectionString" />
-  </parameter>
-  <parameter name="JoukkueDto2-Web.config Connection String" description="JoukkueDto2 Connection String used in web.config by the application to access the database." defaultValue="data source=(LocalDb)\MSSQLLocalDB;initial catalog=NHL_Api.Models.JoukkueDto2;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='JoukkueDto2']/@connectionString" />
-  </parameter>
   <parameter name="H4102_3Entities-Web.config Connection String" description="H4102_3Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.NHL_Entity.csdl|res://*/Models.NHL_Entity.ssdl|res://*/Models.NHL_Entity.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=MYSQL5013.Smarterasp.net;user id=9e3fdf_nhl;password=kamafaa93;database=db_9e3fdf_nhl&quot;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='H4102_3Entities']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="DefaultConnection_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>
