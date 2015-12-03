@@ -31,7 +31,7 @@ namespace NHL_Api.Controllers
                               Pelinumero = b.Pelinumero,
                               Maalit = b.Maalit,
                               Syötöt = b.Syötöt,
-                              Plusmiinus = b.Plusmiinus,
+                              Plusmiinus = b.Plusminus,
                               Pisteet = b.Maalit + b.Syötöt
                           };
             return pelaajat;
@@ -53,7 +53,7 @@ namespace NHL_Api.Controllers
                Pelinumero = b.Pelinumero,
                Maalit = b.Maalit,
                Syötöt = b.Syötöt,
-               Plusmiinus = b.Plusmiinus,
+               Plusmiinus = b.Plusminus,
                Pisteet = b.Maalit + b.Syötöt
            }
            ).SingleOrDefaultAsync(b => b.Id == id);

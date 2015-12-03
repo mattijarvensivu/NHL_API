@@ -234,4 +234,3 @@ C:\Matin\Koulu\NHL_harjoitustyö\NHL_api_uusi\NHL_API\NHL_Api\bin\Microsoft.Owin
 C:\Matin\Koulu\NHL_harjoitustyö\NHL_api_uusi\NHL_API\NHL_Api\bin\System.Web.Http.Owin.xml
 C:\Matin\Koulu\NHL_harjoitustyö\NHL_api_uusi\NHL_API\NHL_Api\obj\Debug\NHL_Api.dll
 C:\Matin\Koulu\NHL_harjoitustyö\NHL_api_uusi\NHL_API\NHL_Api\obj\Debug\NHL_Api.pdb
-C:\Matin\Koulu\NHL_harjoitustyö\NHL_api_uusi\NHL_API\NHL_Api\obj\Debug\NHL_Api.csprojResolveAssemblyReference.cache

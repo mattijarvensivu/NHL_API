@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -215,8 +216,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Joukkue.cs">
       <DependentUpon>NHL_Entity.tt</DependentUpon>
@@ -256,7 +255,6 @@
     <Content Include="Models\NHL_Entity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NHL_Entity.edmx</DependentUpon>
-      <LastGenOutput>NHL_Entity.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\NHL_Entity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -291,7 +289,6 @@
     <Content Include="Models\NHL_Entity.edmx.diagram">
       <DependentUpon>NHL_Entity.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\mattijarvensivu.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

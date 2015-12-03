@@ -4,16 +4,10 @@
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp$" />
     <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
-  <parameter name="DefaultConnection-Web.config Connection String" description="" value="server=mysql.labranet.jamk.fi;user id=H4102;password=wIM4uHzo3kJiAQPfimDTPuuyaA1oFwdy;database=H4102_3" tags="">
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="DefaultConnection_ConnectionString" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
-  <parameter name="H4102_3Entities-Web.config Connection String" description="" value="metadata=res://*/Models.NHL_Entity.csdl|res://*/Models.NHL_Entity.ssdl|res://*/Models.NHL_Entity.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=mysql.labranet.jamk.fi;user id=H4102;password=wIM4uHzo3kJiAQPfimDTPuuyaA1oFwdy;database=H4102_3&quot;" tags="">
+  <parameter name="H4102_3Entities-Web.config Connection String" description="" value="metadata=res://*/Models.NHL_Entity.csdl|res://*/Models.NHL_Entity.ssdl|res://*/Models.NHL_Entity.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=MYSQL5013.Smarterasp.net;user id=9e3fdf_nhl;password=kamafaa93;database=db_9e3fdf_nhl&quot;" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='H4102_3Entities']/@connectionString" />
-  </parameter>
-  <parameter name="JoukkueDto2-Web.config Connection String" description="" value="data source=(LocalDb)\MSSQLLocalDB;initial catalog=NHL_Api.Models.JoukkueDto2;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='JoukkueDto2']/@connectionString" />
-  </parameter>
-  <parameter name="PelaajaDto2-Web.config Connection String" description="" value="data source=(LocalDb)\MSSQLLocalDB;initial catalog=NHL_Api.Models.PelaajaDto2;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Matin\\Koulu\\NHL_harjoitustyö\\NHL_api_uusi\\NHL_API\\NHL_Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='PelaajaDto2']/@connectionString" />
   </parameter>
 </parameters>

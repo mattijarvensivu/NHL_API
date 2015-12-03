@@ -1,33 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="NHL_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="H4102_3Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Joukkues" EntityType="NHL_Model.Joukkue" />
+    <EntitySet Name="Pelaajas" EntityType="NHL_Model.Pelaaja" />
+    <AssociationSet Name="FK_Pelaajajoukkue_id" Association="NHL_Model.FK_Pelaajajoukkue_id">
+      <End Role="Joukkue" EntitySet="Joukkues" />
+      <End Role="Pelaaja" EntitySet="Pelaajas" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Joukkue">
     <Key>
       <PropertyRef Name="idJoukkue" />
     </Key>
     <Property Name="idJoukkue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nimi" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Voitot" Type="Int32" Nullable="false" />
-    <Property Name="Häviöt" Type="Int32" Nullable="false" />
-    <Property Name="Jatkoaikahäviöt" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Pelaajas" Relationship="Self.FK_Pelaajajoukkue" FromRole="Joukkue" ToRole="Pelaaja" />
     <Property Name="Lyhenne" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Nimi" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Voitot" Type="Int32" />
+    <Property Name="Häviöt" Type="Int32" />
+    <Property Name="Jatkoaikahäviöt" Type="Int32" />
+    <NavigationProperty Name="pelaajas" Relationship="NHL_Model.FK_Pelaajajoukkue_id" FromRole="Joukkue" ToRole="Pelaaja" />
   </EntityType>
   <EntityType Name="Pelaaja">
     <Key>
       <PropertyRef Name="idPelaaja" />
     </Key>
     <Property Name="idPelaaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nimi" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pelinumero" Type="Int32" Nullable="false" />
-    <Property Name="Maalit" Type="Int32" Nullable="false" />
-    <Property Name="Syötöt" Type="Int32" Nullable="false" />
-    <Property Name="Plusmiinus" Type="Int32" Nullable="false" />
+    <Property Name="Nimi" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Pelinumero" Type="Int32" />
+    <Property Name="Maalit" Type="Int32" />
+    <Property Name="Syötöt" Type="Int32" />
+    <Property Name="Plusminus" Type="Int32" />
     <Property Name="idJoukkue" Type="Int32" />
-    <NavigationProperty Name="Joukkue" Relationship="Self.FK_Pelaajajoukkue" FromRole="Pelaaja" ToRole="Joukkue" />
+    <NavigationProperty Name="joukkue" Relationship="NHL_Model.FK_Pelaajajoukkue_id" FromRole="Pelaaja" ToRole="Joukkue" />
   </EntityType>
-  <Association Name="FK_Pelaajajoukkue">
-    <End Role="Joukkue" Type="Self.Joukkue" Multiplicity="0..1" />
-    <End Role="Pelaaja" Type="Self.Pelaaja" Multiplicity="*" />
+  <Association Name="FK_Pelaajajoukkue_id">
+    <End Type="NHL_Model.Joukkue" Role="Joukkue" Multiplicity="0..1" />
+    <End Type="NHL_Model.Pelaaja" Role="Pelaaja" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Joukkue">
         <PropertyRef Name="idJoukkue" />
@@ -37,12 +45,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="H4102_3Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Joukkues" EntityType="Self.Joukkue" />
-    <EntitySet Name="Pelaajas" EntityType="Self.Pelaaja" />
-    <AssociationSet Name="FK_Pelaajajoukkue" Association="Self.FK_Pelaajajoukkue">
-      <End Role="Joukkue" EntitySet="Joukkues" />
-      <End Role="Pelaaja" EntitySet="Pelaajas" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0d29b9c12245497b90934e76371d40f4" Name="Diagram1">
-        <EntityTypeShape EntityType="NHL_Model.Joukkue" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NHL_Model.Pelaaja" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="NHL_Model.FK_Pelaajajoukkue" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NHL_Model.Joukkue" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="NHL_Model.Pelaaja" Width="1.5" PointX="3.125" PointY="2.25" />
+        <AssociationConnector Association="NHL_Model.FK_Pelaajajoukkue_id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

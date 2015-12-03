@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace NHL_Api.Models
 {
     using System;
@@ -19,19 +17,17 @@ namespace NHL_Api.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Joukkue()
         {
-            this.Pelaajas = new HashSet<Pelaaja>();
+            this.pelaajas = new HashSet<Pelaaja>();
         }
     
         public int idJoukkue { get; set; }
-        [Required]
+        public string Lyhenne { get; set; }
         public string Nimi { get; set; }
         public int Voitot { get; set; }
         public int Häviöt { get; set; }
         public int Jatkoaikahäviöt { get; set; }
-        [Required]
-        public string Lyhenne { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pelaaja> Pelaajas { get; set; }
+        public virtual ICollection<Pelaaja> pelaajas { get; set; }
     }
 }

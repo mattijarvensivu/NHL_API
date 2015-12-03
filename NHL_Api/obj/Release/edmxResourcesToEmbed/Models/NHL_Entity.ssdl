@@ -1,45 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="NHL_Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Joukkue">
+<Schema Namespace="NHL_Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="joukkue">
     <Key>
       <PropertyRef Name="idJoukkue" />
     </Key>
     <Property Name="idJoukkue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lyhenne" Type="varchar" MaxLength="3" Nullable="false" />
     <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
-    <Property Name="Voitot" Type="int" Nullable="false" />
-    <Property Name="Häviöt" Type="int" Nullable="false" />
-    <Property Name="Jatkoaikahäviöt" Type="int" Nullable="false" />
+    <Property Name="Voitot" Type="int" />
+    <Property Name="Häviöt" Type="int" />
+    <Property Name="Jatkoaikahäviöt" Type="int" />
   </EntityType>
-  <EntityType Name="Pelaaja">
+  <EntityType Name="pelaaja">
     <Key>
       <PropertyRef Name="idPelaaja" />
     </Key>
     <Property Name="idPelaaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nimi" Type="varchar" MaxLength="45" Nullable="false" />
-    <Property Name="Pelinumero" Type="int" Nullable="false" />
-    <Property Name="Maalit" Type="int" Nullable="false" />
-    <Property Name="Syötöt" Type="int" Nullable="false" />
-    <Property Name="Plusminus" Type="int" Nullable="false" />
+    <Property Name="Pelinumero" Type="int" />
+    <Property Name="Maalit" Type="int" />
+    <Property Name="Syötöt" Type="int" />
+    <Property Name="Plusminus" Type="int" />
     <Property Name="idJoukkue" Type="int" />
   </EntityType>
-  <Association Name="FK_Pelaajajoukkue">
-    <End Role="Joukkue" Type="Self.Joukkue" Multiplicity="0..1" />
-    <End Role="Pelaaja" Type="Self.Pelaaja" Multiplicity="*" />
+  <Association Name="FK_Pelaajajoukkue_id">
+    <End Role="joukkue" Type="Self.joukkue" Multiplicity="0..1" />
+    <End Role="pelaaja" Type="Self.pelaaja" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Joukkue">
+      <Principal Role="joukkue">
         <PropertyRef Name="idJoukkue" />
       </Principal>
-      <Dependent Role="Pelaaja">
+      <Dependent Role="pelaaja">
         <PropertyRef Name="idJoukkue" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="NHL_ModelStoreContainer">
-    <EntitySet Name="Joukkue" EntityType="Self.Joukkue" Schema="H4102_3" store:Type="Tables" />
-    <EntitySet Name="Pelaaja" EntityType="Self.Pelaaja" Schema="H4102_3" store:Type="Tables" />
-    <AssociationSet Name="FK_Pelaajajoukkue" Association="Self.FK_Pelaajajoukkue">
-      <End Role="Joukkue" EntitySet="Joukkue" />
-      <End Role="Pelaaja" EntitySet="Pelaaja" />
+    <EntitySet Name="joukkue" EntityType="Self.joukkue" Schema="db_9e3fdf_nhl" store:Type="Tables" />
+    <EntitySet Name="pelaaja" EntityType="Self.pelaaja" Schema="db_9e3fdf_nhl" store:Type="Tables" />
+    <AssociationSet Name="FK_Pelaajajoukkue_id" Association="Self.FK_Pelaajajoukkue_id">
+      <End Role="joukkue" EntitySet="joukkue" />
+      <End Role="pelaaja" EntitySet="pelaaja" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

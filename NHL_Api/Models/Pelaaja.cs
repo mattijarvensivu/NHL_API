@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace NHL_Api.Models
 {
     using System;
@@ -17,15 +15,13 @@ namespace NHL_Api.Models
     public partial class Pelaaja
     {
         public int idPelaaja { get; set; }
-        [Required]
         public string Nimi { get; set; }
-        [Range(1,99)]
         public int Pelinumero { get; set; }
         public int Maalit { get; set; }
         public int Syötöt { get; set; }
-        public int Plusmiinus { get; set; }
-        public Nullable<int> idJoukkue { get; set; }
+        public int Plusminus { get; set; }
+        public int idJoukkue { get; set; }
     
-        public virtual Joukkue Joukkue { get; set; }
+        public virtual Joukkue joukkue { get; set; }
     }
 }
